@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  ytdlp-api:
+    build: .
+    container_name: ytdlp-api
+    ports:
+      - "3000:3000"
+    environment:
+      - API_KEY=${API_KEY}
+      - PORT=3000
+      - NODE_ENV=production
+    volumes:
+      - ./downloads:/app/downloads
+      - ./data:/app/data  
+    restart: unless-stopped
